@@ -3,6 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryEl = document.querySelector('.gallery');
 const loaderEl = document.querySelector('.loader-container');
+const loadMoreBtnEl = document.querySelector('.load-more-btn'); // Додали селектор для кнопки
 
 // Ініціалізація SimpleLightbox
 const lightbox = new SimpleLightbox('.gallery a', {
@@ -10,6 +11,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
+// 1. Створює розмітку і ДОДАЄ її в контейнер, після чого оновлює лайтбокс
 export function createGallery(images) {
   const markup = images
     .map(
@@ -29,18 +31,33 @@ export function createGallery(images) {
     )
     .join('');
 
-  galleryEl.innerHTML = markup;
-  lightbox.refresh(); // Оновлюємо після вставки в DOM
+  // ВАЖЛИВО: використовуємо insertAdjacentHTML, щоб нові сторінки додавалися, а не затирали старі
+  galleryEl.insertAdjacentHTML('beforeend', markup);
+
+  lightbox.refresh();
 }
 
+// 2. Очищає вміст контейнера галереї
 export function clearGallery() {
   galleryEl.innerHTML = '';
 }
 
+// 3. Показує лоадер
 export function showLoader() {
-  loaderEl.classList.remove('hidden');
+  if (loaderEl) loaderEl.classList.remove('hidden');
 }
 
+// 4. Ховає лоадер
 export function hideLoader() {
-  loaderEl.classList.add('hidden');
+  if (loaderEl) loaderEl.classList.add('hidden');
+}
+
+// 5. Показує кнопку Load more
+export function showLoadMoreButton() {
+  if (loadMoreBtnEl) loadMoreBtnEl.classList.remove('hidden');
+}
+
+// 6. Ховає кнопку Load more
+export function hideLoadMoreButton() {
+  if (loadMoreBtnEl) loadMoreBtnEl.classList.add('hidden');
 }

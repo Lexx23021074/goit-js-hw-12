@@ -1,29 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Homework 12</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-   
-
     <main>
-  <form class="form search-form" novalidate>
-    <label>
-      <input type="text" name="searchQuery" placeholder="Search images..." />
-    </label>
-    <button type="submit">Search</button>
-  </form>
+      <form class="form search-form" novalidate>
+        <label>
+          <input
+            type="text"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Search images..."
+          />
+        </label>
+        <button type="submit">Search</button>
+      </form>
 
-    <div class="loader-container hidden">
-      <span class="loader"></span>
-    </div>
+      <ul class="gallery"></ul>
 
+      <button type="button" class="load-more-btn hidden">Load more</button>
 
-  <ul class="gallery"></ul>
+      <div class="loader-container hidden">
+        <span class="loader"></span>
+      </div>
     </main>
 
     <script type="module" src="./main.js"></script>
