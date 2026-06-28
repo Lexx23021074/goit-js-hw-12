@@ -53,6 +53,13 @@ form.addEventListener('submit', async event => {
     // Перевіряємо, чи є ще сторінки для завантаження
     if (data.totalHits > perPage) {
       showLoadMoreButton();
+    } else {
+      // Виправлення для ментора: якщо картинки є, але їх загальна кількість менша або дорівнює 15,
+      // кнопку не показуємо, але ОДРАЗУ виводимо повідомлення про кінець колекції
+      iziToast.info({
+        position: 'topRight',
+        message: "We're sorry, but you've reached the end of search results.",
+      });
     }
   } catch (error) {
     iziToast.error({
@@ -111,7 +118,7 @@ function smoothScroll() {
     // Отримуємо висоту однієї картки
     const { height: cardHeight } = galleryItem.getBoundingClientRect();
 
-    // Прокручуємо на дві висоти картки
+    // Прокручуємо на дві高度 картки
     window.scrollBy({
       top: cardHeight * 2,
       behavior: 'smooth',
