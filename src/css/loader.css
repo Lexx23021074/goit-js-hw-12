@@ -1,33 +1,69 @@
+/* Контейнер для центрування лоадера (і спінера, і тексту разом) */
 .loader-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Вибудовує спінер і текст один під одним */
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* Відступ між колом та текстом */
+  margin: 24px auto;
 }
 
-/* приклад одного з лоадерів css-loader */
+/* Графічний спінер - КРУТИТЬСЯ ТІЛЬКИ ВІН */
 .loader {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: inline-block;
-    border-top: 3px solid #4e75ff;
-    border-right: 3px solid transparent;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #4e75ff;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite; /* Анімація обертання тільки тут */
+}
+
+/* Текст завантаження - СТОЇТЬ РІВНО */
+.loader-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #2e2f42;
+  margin: 0;
+  letter-spacing: 0.04em;
 }
 
 @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-/* клас для приховування */
+/* Клас для приховування */
 .hidden {
-    display: none;
+  display: none !important;
+}
+
+/* Кнопка Load More */
+.load-more-btn {
+  display: block;
+  margin: 32px auto;
+  padding: 10px 20px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+
+  background-color: #4e75ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.load-more-btn:hover,
+.load-more-btn:focus {
+  background-color: #6c8cff;
 }
